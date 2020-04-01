@@ -1,5 +1,5 @@
 # Note
-Make sure the project ProxiWitsApi is running locally before running this web application.
+Make sure the project ProxyWitsApi is running locally before running this web application. This project can be found at https://github.com/MrMarcoux/ProxyWitsApi.
 
 # EconomyWorldMap
 
