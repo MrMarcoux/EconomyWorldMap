@@ -1,0 +1,38 @@
+<br>
+<div id="mapWrapper">
+   <svg
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:cc="http://creativecommons.org/ns#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+      xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+      enable_background="new 0 0 2000 0"
+      
+      pretty_print="False"
+      style="stroke-linejoin: round; stroke:#000; fill: none;"
+      version="1.1"
+      [attr.width]="mapWidth"
+      [attr.viewBox]="viewBoxString"
+      id="svgMap"
+      inkscape:version="0.48.4 r9939"
+      sodipodi:docname="world.svg"
+      (mouseleave)="onMouseLeave($event)" 
+      (mousedown)="onMouseDown($event)" 
+      (mouseup)="onMouseUp($event)" 
+      (mousemove)="onMouseMove($event)">
+      
+      <path *ngFor="let country of countries" [country]="country"
+         inkscape:connector-curvature="0"
+         [attr.id]="country.alpha2Code"
+         [attr.data-name]="country.name"
+         [attr.data-id]="country.alpha3Code"
+         [attr.d]="country.svgPath"
+         [class.loaded]="country.isLoaded()"
+         [class.not-loaded]="!country.isLoaded()"
+         [class.selected]="isCountrySelected(country.alpha3Code)"
+         (click)="onCountryClick($event)">
+      </path>
+   </svg>
+</div>
