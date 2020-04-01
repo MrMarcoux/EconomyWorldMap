@@ -1,0 +1,14 @@
+
+<app-display-title 
+    [valueLabel]="valueLabel" 
+    [valueUnit]="valueUnit" 
+    [valueDate]="null">
+</app-display-title>
+<br>
+<div class="row">
+    <div class="col center" *ngFor="let valueNumber of visuallySimplifiedNumbers()" [valueNumber]="valueNumber">
+        {{ valueNumber }} {{ valueUnit }}
+    </div>
+</div>
+<div width="200" [attr.id]="chartId"></div>
+

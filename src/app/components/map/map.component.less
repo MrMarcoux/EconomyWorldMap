@@ -1,0 +1,32 @@
+#mapWrapper {
+    overflow: hidden;
+    max-height: 700px;
+    cursor: move;
+}
+
+[draggable=true] {
+    cursor: move;
+}
+
+path.loaded {
+    fill:none;
+    stroke:black;
+    pointer-events:all;
+}
+
+path.not-loaded {
+    fill:lightgrey;
+    stroke:grey;
+    opacity: 0.5;
+    pointer-events:none;
+}
+
+path:hover {
+    fill: #4096cf;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+path.selected {
+    fill: #4096cf;
+}

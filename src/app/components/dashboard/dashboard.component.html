@@ -1,0 +1,145 @@
+<div class="flex-fill">
+  <div class="row flex-fill">
+    <div class="col">
+      <div *ngIf="focusedCountry">
+        <div class="row">
+          <app-value-display
+            [valueNumber]="focusedCountry.gdpPerCapita" 
+            [valueLabel]="'GDP Per Capita'"
+            [valueUnit]="'US$'"
+            [valueDate]="null" > 
+          </app-value-display>
+        </div>
+        <hr>
+        <div class="row">
+          <app-progress-display
+            [valuesDict]="focusedCountry.yearlyGdpGrowth" 
+            [valueLabel]="'GDP Growth, yearly'"
+            [valueUnit]="'%'"
+            [colorTheme]="'#4380e0'">
+          </app-progress-display>
+        </div>
+        <hr>
+        <div class="row">          
+          <app-progress-display
+            [valuesDict]="focusedCountry.yearlyInflation" 
+            [valueLabel]="'Inflation rate, yearly'"
+            [valueUnit]="'%'"
+            [colorTheme]="'#fc7272'">
+          </app-progress-display>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="floating-elem" *ngIf="focusedCountry">
+        <app-country-name-display
+          [name]="focusedCountry.name"
+          [alphaCode]="focusedCountry.alpha2Code"
+          (countryUnselected)="countryUnselected($event)">
+        </app-country-name-display>
+      </div>
+      <app-map 
+        (countrySelected)="countrySelected($event)"
+        [selectedCountry]="focusedCountry"> 
+      </app-map>
+    </div>
+    <div class="col">
+      <div *ngIf="focusedCountry">
+        <div class="row center">
+          <app-single-bar-proportion 
+            [valueNumbers]="[focusedCountry.totalImports(), focusedCountry.totalExports()]"
+            [valueLabels]="['total imports', 'total exports']"
+            [valueUnit]="'US$'"
+            [colorThemes]="['#fc7272', '#4380e0']"
+            >
+          </app-single-bar-proportion>
+        </div>
+        <hr>
+        <div class="row center">
+          <app-sitc2-products-display 
+            [productGroups]="focusedCountry.imports"
+            [valueLabel]="'Imports SITC2 categories'"
+            [valueUnit]="'US$'"
+            [colorTheme]="'#fc7272'">
+          </app-sitc2-products-display>
+        </div>
+        <hr>
+        <div class="row center">
+          <app-sitc2-products-display 
+            [productGroups]="focusedCountry.exports"
+            [valueLabel]="'Exports SITC2 categories'"
+            [valueUnit]="'US$'"
+            [colorTheme]="'#4380e0'">
+          </app-sitc2-products-display>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="focusedCountry" class="row flex-fill">
+    <div class="col" *ngIf="focusedCountry.lendingInterestRate">
+      <div class="row center">
+        <img src="assets/svg/lending.svg" height="50">
+      </div>
+      <div class="row center">
+       <app-value-display
+          [valueNumber]="focusedCountry.lendingInterestRate" 
+          [valueLabel]="'Lending Interest Rate'"
+          [valueUnit]="'%'"
+          [valueDate]="null"> 
+        </app-value-display>
+      </div>
+    </div>
+    <div class="col" *ngIf="focusedCountry.realInterestRate">
+      <div class="row center">
+        <img src="assets/svg/loan.svg" height="50">
+      </div>
+      <div class="row center">
+        <app-value-display
+          [valueNumber]="focusedCountry.realInterestRate" 
+          [valueLabel]="'Real Interest Rate'"
+          [valueUnit]="'%'"
+          [valueDate]="null"> 
+        </app-value-display>
+      </div>
+    </div>
+    <div class="col" *ngIf="focusedCountry.unemploymentRate">
+      <div class="row center">
+        <img src="assets/svg/briefcase.svg" height="50">
+      </div>
+      <div class="row center">
+        <app-value-display
+          [valueNumber]="focusedCountry.unemploymentRate" 
+          [valueLabel]="'Unemployment Rate'"
+          [valueUnit]="'%'"
+          [valueDate]="null"> 
+        </app-value-display>
+      </div>
+    </div>
+    <div class="col" *ngIf="focusedCountry.totalReserves">
+      <div class="row center">
+        <img src="assets/svg/gold.svg" height="50">
+      </div>
+      <div class="row center">
+        <app-value-display
+          [valueNumber]="focusedCountry.totalReserves" 
+          [valueLabel]="'Total Reserves'"
+          [valueUnit]="'US$'"
+          [valueDate]="null"> 
+        </app-value-display>
+      </div>
+    </div>
+    <div class="col" *ngIf="focusedCountry.stocksTraded">
+      <div class="row center">
+        <img src="assets/svg/stocks.svg" height="50">
+      </div>
+      <div class="row center">
+        <app-value-display
+          [valueNumber]="focusedCountry.stocksTraded" 
+          [valueLabel]="'Stocks traded'"
+          [valueUnit]="'% of GDP'"
+          [valueDate]="null">
+        </app-value-display>
+      </div>
+    </div>
+  </div>
+</div>

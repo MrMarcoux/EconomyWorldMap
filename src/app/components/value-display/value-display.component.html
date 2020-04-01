@@ -1,0 +1,9 @@
+<div *ngIf="valueNumber">
+    <app-display-title 
+        [valueLabel]="valueLabel" 
+        [valueUnit]="valueUnit" 
+        [valueDate]="valueDate"> 
+    </app-display-title>
+    <p class="value-box"><nobr> {{ getNumberDisplay() }} <span>{{ valueUnit }}</span></nobr></p>
+</div>
+

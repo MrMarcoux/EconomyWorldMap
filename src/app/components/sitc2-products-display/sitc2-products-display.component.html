@@ -1,0 +1,19 @@
+<div *ngIf="productGroups">
+<app-display-title 
+    [valueLabel]="valueLabel" 
+    [valueUnit]="valueUnit" 
+    [valueDate]="null">
+</app-display-title>
+<div>
+  <div style="display: block">
+    <canvas baseChart
+             [datasets]="radarChartData"
+             [labels]="radarChartLabels"
+             [options]="radarChartOptions"
+             [chartType]="'radar'"
+             width="250"
+             height="250">
+    </canvas>
+  </div>
+</div>
+</div>

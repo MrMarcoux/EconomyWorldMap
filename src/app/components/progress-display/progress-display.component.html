@@ -1,0 +1,9 @@
+<div *ngIf="valuesDict">
+    <app-display-title 
+        [valueLabel]="valueLabel" 
+        [valueUnit]="valueUnit" 
+        [valueDate]="null"> 
+    </app-display-title>
+    <p> Current: {{ latest() }} {{ valueUnit }} </p>
+    <div [attr.id]="chartId"></div>
+</div>
